@@ -54,6 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
           onSuccess,
           () => {}
         );
+        
       };
      //ajout un bouton pour demarrer la communication 
      btnStart.addEventListener("click", () => {
