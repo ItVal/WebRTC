@@ -55,6 +55,9 @@ document.addEventListener('DOMContentLoaded', function() {
           () => {}
         );
       };
-       
+     //ajout un bouton pour demarrer la communication 
+     btnStart.addEventListener("click", () => {
+        startPeer(true);
+      });  
 
 })
