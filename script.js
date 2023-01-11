@@ -31,5 +31,30 @@ document.addEventListener('DOMContentLoaded', function() {
        navigator.webkitGetUserMedia ||
        navigator.mozGetUserMedia;
 
+      // initialisation connexion en peer to peer
+       const startPeer = (initiator = true) => {
+        const onSuccess = (stream) => {
+          const peerConnexion = new SimplePeer({
+            initiator: initiator,
+            stream: stream,
+            trickle: false,
+          });
+          bindEvent(peerConnexion);
+    
+          const videoEmitter = document.getElementById("emitter-video");
+          videoEmitter.volume = 0;
+          videoEmitter.srcObject = stream;
+          videoEmitter.play();
+        };
+        navigator.getUserMedia(
+          {
+            video: true,
+            audio: true,
+          },
+          onSuccess,
+          () => {}
+        );
+      };
        
+
 })
