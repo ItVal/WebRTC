@@ -59,5 +59,9 @@ document.addEventListener('DOMContentLoaded', function() {
      btnStart.addEventListener("click", () => {
         startPeer(true);
       });  
-
+    //ajout d'un bouton pour recevoir la communication
+    const btnReceiver = document.getElementById("receive");
+    btnReceiver.addEventListener("click", () => {
+      startPeer(false);
+    });
 })
