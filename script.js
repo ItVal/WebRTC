@@ -3,4 +3,23 @@ document.addEventListener('DOMContentLoaded', function() {
      document.getElementById("incoming").addEventListener("submit", (evt) => {
         evt.preventDefault();
       });
+    
+       // On definit un ensemble d'evenement qui seront detecter et executer lors de la connexion peep to Peer
+    const bindEvent = (peerConnexion) => {
+    document.getElementById("incoming").addEventListener("submit", (evt) => {
+          peerConnexion.signal(JSON.parse(document.getElementById("text").value));
+        });
+        peerConnexion.on("error", (err) => {
+          console.log(err);
+        });
+        peerConnexion.on("signal", (data) => {
+          document.getElementById("offer").value = JSON.stringify(data);
+        });
+        peerConnexion.on("stream", (stream) => {
+          const video = document.getElementById("receiver-video");
+          video.volume = 0;
+          video.srcObject = stream;
+          video.play();
+        });
+      };
 })
