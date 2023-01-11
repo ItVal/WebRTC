@@ -22,4 +22,14 @@ document.addEventListener('DOMContentLoaded', function() {
           video.play();
         });
       };
+
+     // Le button pour demarrer LA CONVERSION
+     const btnStart = document.getElementById("start");
+     // On fait la compatibilité avec les autres utilisateurs
+     navigator.getUserMedia =
+       navigator.getUserMedia ||
+       navigator.webkitGetUserMedia ||
+       navigator.mozGetUserMedia;
+
+       
 })
